@@ -154,11 +154,11 @@ function toggleLanguage() {
   const btnKn = document.getElementById('lang-kn');
   
   if (currentLang === 'en') {
-    btnEn.className = 'px-2 py-1 rounded-lg transition-all bg-secondary text-primary shadow-sm';
-    btnKn.className = 'px-2 py-1 rounded-lg transition-all text-white/60 hover:text-white';
+    btnEn.className = 'px-3 md:px-4 h-full flex items-center justify-center rounded-full transition-all bg-secondary text-primary shadow-sm';
+    btnKn.className = 'px-3 md:px-4 h-full flex items-center justify-center rounded-full transition-all text-white/60 hover:text-white';
   } else {
-    btnKn.className = 'px-2 py-1 rounded-lg transition-all bg-secondary text-primary shadow-sm';
-    btnEn.className = 'px-2 py-1 rounded-lg transition-all text-white/60 hover:text-white';
+    btnKn.className = 'px-3 md:px-4 h-full flex items-center justify-center rounded-full transition-all bg-secondary text-primary shadow-sm';
+    btnEn.className = 'px-3 md:px-4 h-full flex items-center justify-center rounded-full transition-all text-white/60 hover:text-white';
   }
 
   applyLanguage();
