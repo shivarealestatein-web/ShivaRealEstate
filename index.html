@@ -1076,10 +1076,12 @@
     }
   </script>
 
-  <!-- Vercel Analytics (Vanilla JS Integration) -->
+  <!-- Vercel Analytics & Speed Insights (Vanilla JS Integration) -->
   <script type="module">
-    import { inject } from 'https://esm.sh/@vercel/analytics';
-    inject();
+    import { inject as injectAnalytics } from 'https://esm.sh/@vercel/analytics';
+    import { inject as injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights';
+    injectAnalytics();
+    injectSpeedInsights();
   </script>
 </body>
 </html>
