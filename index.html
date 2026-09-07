@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0f2854" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen">
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary/95 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] border-b border-white/10 pt-safe transition-all duration-300">
+    <div class="h-16 md:h-20 px-gutter-mobile md:px-gutter-desktop lg:px-12 w-full max-w-max-container mx-auto flex items-center justify-between gap-space-xs relative">
+      <div class="flex items-center gap-3 min-w-0 cursor-pointer group" onclick="switchPage('home')">
+        <img alt="Shiva Real Estate Logo" class="h-10 md:h-14 w-auto object-contain flex-shrink-0 bg-white rounded-lg p-1 group-hover:scale-105 transition-transform duration-300" src="assets/images/logo.png"/>
+        <div class="flex flex-col truncate">
+          <span class="font-title-card text-[16px] md:text-[20px] bg-gradient-to-r from-[#FBBF24] to-white bg-clip-text text-transparent font-extrabold leading-tight truncate tracking-wide">Shiva Real Estate</span>
+          <span class="font-body-sm text-[11px] text-white/70 leading-none truncate mt-0.5 tracking-widest uppercase" data-en="Properties Directory" data-kn="ಆಸ್ತಿ ಡೈರೆಕ್ಟರಿ">Properties Directory</span>
+        </div>
+      </div>
+      
+      <!-- Desktop Quick Links -->
+      <nav class="hidden md:flex items-center justify-center flex-1 px-4 relative">
+        <div class="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10 shadow-inner backdrop-blur-md">
+          <a href="#" onclick="switchPage('home'); return false;" class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 text-white font-label-badge text-[13px] font-bold transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[16px] text-secondary">home_work</span>
+            <span data-en="Home" data-kn="ಮುಖಪುಟ">Home</span>
+          </a>
+          <div class="w-px h-4 bg-white/10"></div>
+          <a href="#" onclick="switchPage('home'); setTimeout(() => { document.getElementById('category-tab-bar').scrollIntoView({behavior: 'smooth', block: 'center'}); switchCategory('villa-plots'); }, 100); return false;" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 font-label-badge text-[13px] font-bold transition-all group">
+            <span class="material-symbols-outlined text-[16px] group-hover:text-secondary transition-colors">map</span>
+            <span data-en="Plots" data-kn="ಪ್ಲಾಟ್‌ಗಳು">Plots</span>
+          </a>
+          <div class="w-px h-4 bg-white/10"></div>
+          <a href="#" onclick="switchPage('about'); return false;" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 font-label-badge text-[13px] font-bold transition-all group">
+            <span class="material-symbols-outlined text-[16px] group-hover:text-secondary transition-colors">badge</span>
+            <span data-en="About Us" data-kn="ನಮ್ಮ ಬಗ್ಗೆ">About Us</span>
+          </a>
+          <div class="w-px h-4 bg-white/10"></div>
+          <a href="#" onclick="switchPage('home'); setTimeout(() => document.getElementById('inquiry-section').scrollIntoView({behavior: 'smooth'}), 100); return false;" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 font-label-badge text-[13px] font-bold transition-all group">
+            <span class="material-symbols-outlined text-[16px] group-hover:text-secondary transition-colors">support_agent</span>
+            <span data-en="Contact" data-kn="ಸಂಪರ್ಕಿಸಿ">Contact</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="flex items-center gap-1.5 md:gap-3 flex-shrink-0">
+        <a aria-label="Call Shiva Kumar at 99456 08767" class="hidden md:flex w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/10 items-center justify-center text-white hover:bg-secondary hover:text-primary transition-colors duration-200" href="tel:9945608767">
+          <span class="material-symbols-outlined text-[20px]">call</span>
+        </a>
+        <button id="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle Language" class="h-9 md:h-11 px-1 rounded-[0.8rem] bg-white/10 border border-white/20 flex items-center justify-center font-label-badge text-label-badge font-bold transition-colors gap-1 shadow-inner group hover:bg-white/15">
+          <span class="px-2 py-1 rounded-lg transition-all bg-secondary text-primary shadow-sm" id="lang-en">EN</span>
+          <span class="px-2 py-1 rounded-lg transition-all text-white/60 hover:text-white" id="lang-kn">ಕನ್ನಡ</span>
+        </button>
+        <img alt="Profile" class="w-9 h-9 md:w-12 md:h-12 ml-1 md:ml-2 rounded-full object-cover ring-2 ring-secondary ring-offset-2 ring-offset-primary cursor-pointer hover:scale-105 transition-transform" onclick="switchPage('about')" src="assets/images/shiva-kumar-profile.jpg"/>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex flex-col relative w-full pt-16 md:pt-20 pb-24 md:pb-32 bg-surface min-h-screen">
+    <div class="flex flex-col w-full" id="page-home">
+      
+      <!-- Split Hero Section -->
+      <section class="relative w-full overflow-hidden px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pt-space-md pb-space-md opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+        <div class="relative w-full rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#001337] via-[#0f2854] to-[#1a365d] text-on-primary overflow-hidden shadow-2xl transition-transform duration-700 hover:shadow-[0_20px_50px_rgba(15,40,84,0.3)]">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- Left Column: Content -->
+            <div class="lg:col-span-7 p-space-md md:p-space-xl flex flex-col gap-space-md z-10">
+              <div class="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-secondary-container/20 pointer-events-none blur-2xl"></div>
+              
+              <!-- Trust Bar / Authority Badges -->
+              <div class="flex flex-wrap items-center gap-2 md:gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-secondary/10 border border-secondary/20 text-secondary font-label-badge text-[11px] md:text-[12px] font-bold tracking-wide">
+                  <span class="material-symbols-outlined text-[14px]">verified</span> CUDA Approved
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/80 font-label-badge text-[11px] md:text-[12px] font-medium tracking-wide">
+                  <span class="material-symbols-outlined text-[14px]">receipt_long</span> 'E' Khata Verified
+                </span>
+              </div>
+
+              <!-- Main Headline & Subheadline -->
+              <div class="flex flex-col gap-3 md:gap-4 relative z-10">
+                <!-- Eyebrow Hook Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-[#FBBF24]/20 to-white/5 border border-[#FBBF24]/30 backdrop-blur-md self-start mb-1 shadow-[0_0_15px_rgba(251,191,36,0.15)]">
+                  <span class="text-[#FBBF24] text-[14px] md:text-[16px]">🙏</span>
+                  <span class="font-sans text-[10px] md:text-[12px] font-bold text-white tracking-widest uppercase" data-en="Namaskara! Phase 1 Selling Fast" data-kn="ನಮಸ್ಕಾರ! ಹಂತ 1 ವೇಗವಾಗಿ ಮಾರಾಟವಾಗುತ್ತಿದೆ">Namaskara! Phase 1 Selling Fast</span>
+                </div>
+                
+                <h1 class="font-display-hero text-[38px] leading-[1.35] sm:text-[44px] md:text-[56px] lg:text-[68px] font-extrabold tracking-tight text-white drop-shadow-lg py-1 md:py-2"
+                  data-en-html='<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#FDE68A] to-[#F59E0B] drop-shadow-[0_2px_20px_rgba(251,191,36,0.4)]">Happy World</span> Layout<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#FDE68A] to-[#F59E0B]">in Chikkaballapura</span>'
+                  data-kn-html='<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#FDE68A] to-[#F59E0B]">ಚಿಕ್ಕಬಳ್ಳಾಪುರದಲ್ಲಿ</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FDE68A]/80 to-white/90">ಹ್ಯಾಪಿ ವರ್ಲ್ಡ್ ಲೇಔಟ್</span>'>
+                  <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#FDE68A] to-[#F59E0B] drop-shadow-[0_2px_20px_rgba(251,191,36,0.4)]">Happy World</span> Layout<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#FDE68A] to-[#F59E0B]">in Chikkaballapura</span>
+                </h1>
+                
+                <div class="flex items-center gap-3 mt-2 md:mt-1 bg-gradient-to-r from-[#FBBF24]/10 to-white/5 w-fit px-4 py-2.5 rounded-lg border border-[#FBBF24]/20 backdrop-blur-sm shadow-[0_0_15px_rgba(251,191,36,0.08)]">
+                  <span class="w-1.5 h-6 bg-gradient-to-b from-[#FDE68A] to-[#F59E0B] rounded-full shadow-[0_0_6px_rgba(251,191,36,0.6)]"></span>
+                  <h2 class="font-headline-sm text-[16px] md:text-[20px] font-bold tracking-wide"
+                    data-en-html='<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A]">Premium</span> <span class="text-white">Residential Layout with</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#F59E0B]">&apos;E&apos; Khata</span>'
+                    data-kn-html='<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A]">ಪ್ರೀಮಿಯಂ</span> <span class="text-white">ವಸತಿ ಲೇಔಟ್</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#F59E0B]">&#39;E&#39; ಖಾತಾ ಜೊತೆಗೆ</span>'>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A]">Premium</span> <span class="text-white">Residential Layout with</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#F59E0B]">'E' Khata</span>
+                  </h2>
+                </div>
+                
+                <p class="font-body-md text-[15px] md:text-[17px] text-white/70 max-w-xl leading-relaxed mt-1 font-medium"
+                  data-en-html='Best-in-class residential layout with <span class="text-[#FDE68A] font-semibold">concrete roads</span>, <span class="text-[#FDE68A] font-semibold">underground electricity</span>, and <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A] font-bold">80% bank loan assistance</span> from <span class="text-[#FDE68A] font-semibold">HDFC &amp; LIC</span>.'
+                  data-kn-html='<span class="text-[#FDE68A] font-semibold">ಕಾಂಕ್ರೀಟ್ ರಸ್ತೆಗಳು</span>, <span class="text-[#FDE68A] font-semibold">ಭೂಗತ ವಿದ್ಯುತ್</span>, ಮತ್ತು HDFC ಹಾಗೂ LIC ಯಿಂದ <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A] font-bold">80% ಬ್ಯಾಂಕ್ ಸಾಲ</span> ಜೊತೆಗೆ ಅತ್ಯುತ್ತಮ ವಸತಿ ಲೇಔಟ್.'>
+                  Best-in-class residential layout with <span class="text-[#FDE68A] font-semibold">concrete roads</span>, <span class="text-[#FDE68A] font-semibold">underground electricity</span>, and <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#FDE68A] font-bold">80% bank loan assistance</span> from <span class="text-[#FDE68A] font-semibold">HDFC &amp; LIC</span>.
+                </p>
+              </div>
+
+              <!-- Quick Metrics Strip -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-0 py-1 px-1 rounded-[1.25rem] bg-[#0A1120]/60 border border-white/10 backdrop-blur-2xl shadow-2xl mt-5 relative overflow-hidden divide-x divide-y md:divide-y-0 divide-white/10">
+                <div class="absolute top-0 left-1/4 w-32 h-1 bg-gradient-to-r from-transparent via-[#FBBF24]/50 to-transparent blur-sm"></div>
+                
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-3 p-4 group z-10 text-center md:text-left">
+                  <div class="w-10 h-10 shrink-0 rounded-full bg-[#1e293b] border border-white/5 flex items-center justify-center group-hover:border-[#FBBF24]/30 group-hover:bg-[#FBBF24]/10 transition-all duration-300">
+                    <span class="material-symbols-outlined text-[18px] text-[#FBBF24]">workspace_premium</span>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <span class="font-display-hero text-[24px] md:text-[28px] text-white font-extrabold tracking-tight leading-none">100%</span>
+                    <span class="font-body-sm text-[10px] md:text-[11px] text-white/60 font-bold uppercase tracking-widest mt-1">Clear Title</span>
+                  </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-3 p-4 group z-10 text-center md:text-left">
+                  <div class="w-10 h-10 shrink-0 rounded-full bg-[#1e293b] border border-white/5 flex items-center justify-center group-hover:border-[#FBBF24]/30 group-hover:bg-[#FBBF24]/10 transition-all duration-300">
+                    <span class="material-symbols-outlined text-[18px] text-[#FBBF24]">history</span>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <span class="font-display-hero text-[24px] md:text-[28px] text-white font-extrabold tracking-tight leading-none">30+</span>
+                    <span class="font-body-sm text-[10px] md:text-[11px] text-white/60 font-bold uppercase tracking-widest mt-1">Yrs Legacy</span>
+                  </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-3 p-4 group z-10 text-center md:text-left">
+                  <div class="w-10 h-10 shrink-0 rounded-full bg-[#1e293b] border border-white/5 flex items-center justify-center group-hover:border-[#FBBF24]/30 group-hover:bg-[#FBBF24]/10 transition-all duration-300">
+                    <span class="material-symbols-outlined text-[18px] text-[#FBBF24]">group</span>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <span class="font-display-hero text-[24px] md:text-[28px] text-white font-extrabold tracking-tight leading-none">100+</span>
+                    <span class="font-body-sm text-[10px] md:text-[11px] text-white/60 font-bold uppercase tracking-widest mt-1">Families</span>
+                  </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-3 p-4 group z-10 text-center md:text-left relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-green-500/5 to-transparent pointer-events-none"></div>
+                  <div class="w-10 h-10 shrink-0 rounded-full bg-[#064e3b] border border-[#047857] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span class="material-symbols-outlined text-[18px] text-[#34d399]">percent</span>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <span class="font-display-hero text-[24px] md:text-[28px] text-[#34d399] font-extrabold tracking-tight leading-none drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]">2%</span>
+                    <span class="font-body-sm text-[10px] md:text-[11px] text-[#34d399]/80 font-bold uppercase tracking-widest mt-1">Commission</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Primary Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 mt-6 mb-2">
+                <a class="flex-1 relative group" href="#inquiry-section">
+                  <div class="absolute -inset-1 bg-gradient-to-r from-[#FBBF24] to-[#FDE68A] rounded-full blur-md opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                  <div class="relative h-14 rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] flex items-center justify-center gap-2 border border-[#FDE68A] transition-all shadow-[0_8px_20px_rgba(251,191,36,0.3)] overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
+                    <span class="material-symbols-outlined text-[20px] text-[#0F172A]">calendar_add_on</span>
+                    <span class="font-sans font-extrabold text-[14px] text-[#0F172A] tracking-widest uppercase">Schedule Site Visit</span>
+                  </div>
+                </a>
+
+                <a class="flex-1 relative group" href="https://wa.me/919945608767?text=Hello%20Shiva%20Kumar%20Sir,%20Please%20share%20the%20latest%20Layout%20Plan%20PDF.">
+                  <div class="absolute inset-0 rounded-full bg-white/5 backdrop-blur-xl transition-colors duration-300"></div>
+                  <div class="relative h-14 rounded-full flex items-center justify-center gap-2 border border-white/15 group-hover:border-[#25D366] group-hover:bg-[#25D366]/10 transition-all shadow-inner">
+                    <svg class="w-5 h-5 fill-[#25D366] group-hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.8)] transition-all" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                    <span class="font-sans font-bold text-[14px] text-white tracking-wide" data-en="Master Plan (PDF)" data-kn="ಮಾಸ್ಟರ್ ಪ್ಲಾನ್ (PDF)">Master Plan (PDF)</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+
+            <!-- Right Column: Visual Accent Card -->
+            <div class="flex flex-col lg:col-span-5 relative bg-gradient-to-br from-[#0a1930] to-[#050e1c] p-5 md:p-6 gap-4 md:gap-5 overflow-hidden lg:h-[600px] overflow-y-auto custom-scrollbar">
+              <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
+              <div class="absolute -top-32 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"></div>
+              
+              <!-- Layout Master Plan Image Card -->
+              <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 z-10">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                <img src="assets/images/master-plan-new.png" alt="Happy World Master Plan" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                <div class="absolute top-4 left-4 z-20 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 flex items-center gap-2 shadow-lg">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">map</span>
+                  <span class="font-headline-sm text-[12px] font-bold text-primary">Master Plan</span>
+                </div>
+                <div class="absolute bottom-4 right-4 z-20 bg-primary/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 shadow-lg group-hover:bg-secondary transition-colors cursor-pointer">
+                  <a href="assets/images/master-plan-new.png" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-white group-hover:text-primary">
+                    <span class="material-symbols-outlined text-[16px]">zoom_in</span>
+                    <span class="font-headline-sm text-[11px] font-bold">Enlarge</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Premium Plot Details Card -->
+              <div class="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 md:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.4)] flex flex-col gap-6 z-10 shrink-0">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 rounded-3xl pointer-events-none"></div>
+                
+                <div class="flex items-center justify-between pb-4 border-b border-white/10 relative z-10">
+                  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border border-secondary/40 flex items-center justify-center bg-gradient-to-br from-secondary/20 to-transparent shadow-inner flex-shrink-0">
+                      <span class="material-symbols-outlined text-secondary text-[22px]">architecture</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <h3 class="font-headline-sm text-white font-extrabold text-[18px] md:text-[22px] tracking-wide leading-tight">Layout Specifications</h3>
+                      <span class="font-body-sm text-white/50 text-[12px]">Phase 1 Availability</span>
+                    </div>
+                  </div>
+                  <div class="px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 flex items-center gap-2 shadow-inner">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span>
+                    <span class="font-label-badge text-green-400 text-[11px] uppercase tracking-widest font-bold hidden sm:inline">LIVE STATUS</span>
+                    <span class="font-label-badge text-green-400 text-[11px] uppercase tracking-widest font-bold sm:hidden">LIVE</span>
+                  </div>
+                </div>
+                
+                <!-- Scarcity Progress Bar -->
+                <div class="flex flex-col gap-2 relative z-10 -mt-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-badge text-[11px] text-white/60 uppercase tracking-widest font-bold flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[14px] text-red-400">warning</span>
+                      Plot Availability
+                    </span>
+                    <span class="font-label-badge text-[11px] text-red-400 font-extrabold uppercase tracking-wider animate-pulse">Only 5 Left!</span>
+                  </div>
+                  <div class="relative w-full h-4 rounded-full bg-white/10 border border-white/10 overflow-hidden shadow-inner">
+                    <!-- Sold portion (10/15 = 66.67%) -->
+                    <div class="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-red-500 via-red-400 to-orange-400 shadow-[0_0_10px_rgba(239,68,68,0.5)]" style="width: 66.67%; transition: width 1.5s ease-out;"></div>
+                    <!-- Available portion label -->
+                    <div class="absolute inset-y-0 right-0 rounded-r-full bg-gradient-to-r from-emerald-500/30 to-emerald-400/20 border-l border-emerald-400/40" style="width: 33.33%;"></div>
+                    <!-- Shine overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent rounded-full pointer-events-none"></div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-body-sm text-[11px] text-red-400/80 font-semibold flex items-center gap-1">
+                      <span class="w-2 h-2 rounded-full bg-red-400 inline-block"></span> 10 Plots Sold
+                    </span>
+                    <span class="font-body-sm text-[11px] text-emerald-400/80 font-semibold flex items-center gap-1">
+                      <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span> 5 Available
+                    </span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 md:gap-4 relative z-10">
+                  <!-- Total Sites -->
+                  <div class="flex flex-col p-4 md:p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all group">
+                    <span class="font-label-badge text-white/40 text-[10px] md:text-[11px] uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+                      <span class="material-symbols-outlined text-[16px]">grid_view</span> TOTAL PLOTS
+                    </span>
+                    <div class="flex items-baseline gap-2 mb-4">
+                      <span class="font-display-hero text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 text-[38px] md:text-[46px] font-extrabold leading-none tracking-tight">15</span>
+                      <span class="font-title-card text-white/50 text-[13px] md:text-[14px] font-medium">Plots</span>
+                    </div>
+                    <div class="mt-auto">
+                      <span class="font-body-sm text-red-400 text-[11px] md:text-[12px] font-bold flex items-center gap-1 md:gap-1.5 bg-red-500/10 w-fit px-2.5 py-1.5 rounded-full border border-red-500/20 shadow-inner">
+                        <span class="material-symbols-outlined text-[14px]">sell</span> 10 Sold Out
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Available Sites -->
+                  <div class="flex flex-col p-4 md:p-5 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 hover:border-green-500/40 hover:shadow-[0_0_25px_rgba(74,222,128,0.15)] transition-all group">
+                    <span class="font-label-badge text-green-400/80 text-[10px] md:text-[11px] uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+                      <span class="material-symbols-outlined text-[16px]">event_available</span> AVAILABLE
+                    </span>
+                    <div class="flex items-baseline gap-2 mb-4">
+                      <span class="font-display-hero text-transparent bg-clip-text bg-gradient-to-br from-green-300 to-green-500 text-[38px] md:text-[46px] font-extrabold leading-none tracking-tight group-hover:scale-105 transition-transform origin-left">5</span>
+                      <span class="font-title-card text-green-400/60 text-[13px] md:text-[14px] font-medium">Left</span>
+                    </div>
+                    <div class="mt-auto">
+                      <span class="font-body-sm text-green-400 text-[11px] md:text-[12px] font-bold flex items-center gap-1 md:gap-1.5 bg-green-500/20 w-fit px-2.5 py-1.5 rounded-full border border-green-500/30 shadow-inner">
+                        <span class="material-symbols-outlined text-[14px]">local_fire_department</span> Fast Filling
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Premium 30x70 -->
+                  <div class="flex flex-col p-4 md:p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/30 hover:bg-white/10 transition-all group">
+                    <span class="font-label-badge text-white/40 text-[10px] md:text-[11px] uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+                      <span class="material-symbols-outlined text-[16px]">aspect_ratio</span> PLOT (30X70)
+                    </span>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      <span class="font-display-hero text-white/90 text-[32px] md:text-[36px] font-extrabold leading-none tracking-tight group-hover:text-white transition-colors">3</span>
+                      <span class="font-title-card text-white/50 text-[13px] md:text-[14px] font-medium">Plots</span>
+                    </div>
+                    <span class="font-body-sm text-secondary text-[12px] md:text-[13px] font-bold mt-auto pt-2 flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_5px_rgba(197,155,39,0.8)]"></span> Available Now
+                    </span>
+                  </div>
+
+                  <!-- Standard 30x50 -->
+                  <div class="flex flex-col p-4 md:p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/30 hover:bg-white/10 transition-all group">
+                    <span class="font-label-badge text-white/40 text-[10px] md:text-[11px] uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+                      <span class="material-symbols-outlined text-[16px]">aspect_ratio</span> PLOT (30X50)
+                    </span>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      <span class="font-display-hero text-white/90 text-[32px] md:text-[36px] font-extrabold leading-none tracking-tight group-hover:text-white transition-colors">2</span>
+                      <span class="font-title-card text-white/50 text-[13px] md:text-[14px] font-medium">Plots</span>
+                    </div>
+                    <span class="font-body-sm text-secondary text-[12px] md:text-[13px] font-bold mt-auto pt-2 flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_5px_rgba(197,155,39,0.8)]"></span> Available Now
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Location Map Card -->
+              <div class="relative flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl flex flex-col z-10 overflow-hidden group min-h-[220px]">
+              <!-- Location Map Card -->
+              <div class="relative flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl flex flex-col z-10 overflow-hidden group min-h-[220px] shrink-0">
+                <div class="absolute inset-0 bg-[#0a1930]/40 z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700"></div>
+                <!-- Google Maps iframe for Happy World Coordinates -->
+                <iframe class="w-full h-full rounded-xl filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-700" src="https://maps.google.com/maps?q=13.445000,77.719111&t=&z=15&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
+                <!-- Floating Location Badge -->
+                <div class="absolute bottom-4 left-4 right-4 bg-surface-container-lowest/95 backdrop-blur-xl rounded-xl p-3.5 border border-white/20 shadow-2xl z-20 flex items-center justify-between transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
+                  <div class="flex items-center gap-3 text-primary">
+                    <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[24px] text-red-500 drop-shadow-md">location_on</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-headline-sm text-[14px] font-bold" data-en="Happy World Layout" data-kn="ಹ್ಯಾಪಿ ವರ್ಲ್ಡ್ ಲೇಔಟ್">Happy World Layout</span>
+                      <span class="font-body-sm text-[11px] text-on-surface-variant font-medium">Chikkaballapura</span>
+                    </div>
+                  </div>
+                  <a href="https://maps.google.com/?q=13.445000,77.719111" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary hover:text-primary shadow-md transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">navigation</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <style>
+              .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+              .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 10px; }
+              .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+              .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+            </style>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bank Approval Partner Strip -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.15s;">
+        <div class="relative max-w-4xl mx-auto rounded-3xl p-6 md:p-8 bg-surface-container-lowest border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden group">
+          <!-- Subtle animated gradient background to replace the harsh green glow -->
+          <div class="absolute inset-0 bg-gradient-to-r from-green-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          
+          <div class="relative z-10 flex flex-col items-center gap-5 md:gap-8">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-green-500/5 border border-green-500/20 shadow-sm">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              <span class="font-label-badge text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-green-600 font-bold text-center" data-en="Up to 80% Loan Approved By" data-kn="80% ವರೆಗೆ ಸಾಲವನ್ನು ಅನುಮೋದಿಸಲಾಗಿದೆ">Up to 80% Loan Approved By</span>
+            </div>
+            
+            <div id="bank-logos" class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out">
+              <div class="font-bold text-xl md:text-2xl text-primary font-display-hero tracking-tighter flex items-center gap-1.5"><span class="w-6 h-6 rounded-full bg-blue-600 inline-block shadow-sm"></span>SBI</div>
+              <div class="font-bold text-xl md:text-2xl text-primary font-display-hero tracking-tighter flex items-center gap-1.5"><span class="w-5 h-5 bg-red-600 inline-block shadow-sm"></span>HDFC BANK</div>
+              <div class="font-bold text-xl md:text-2xl text-primary font-display-hero tracking-tighter flex items-center gap-1"><span class="text-orange-500 material-symbols-outlined text-[28px]">bolt</span>ICICI</div>
+              <div class="font-bold text-xl md:text-2xl text-primary font-display-hero tracking-tighter hidden md:flex items-center gap-1.5"><span class="text-blue-800 font-serif">Bank of Baroda</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Strategic Connectivity Radar Section -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-xl opacity-0 animate-fade-in-up" style="animation-delay: 0.18s;">
+        <div class="relative bg-gradient-to-br from-[#0a1930] to-[#050e1c] border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-2xl flex flex-col gap-6 overflow-hidden">
+          <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 rounded-[2rem] pointer-events-none"></div>
+          
+          <div class="flex items-center gap-3 border-b border-white/10 pb-4 relative z-10">
+            <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#DAA520] text-[32px] animate-[spin_4s_linear_infinite] drop-shadow-[0_0_15px_rgba(218,165,32,0.6)]" style="font-variation-settings: 'FILL' 1">radar</span>
+            <div class="flex flex-col">
+              <h3 class="font-headline-sm text-white font-bold text-[18px] md:text-[22px] tracking-wide" data-en="Strategic Location Connectivity Radar" data-kn="ಆಯಕಟ್ಟಿನ ಸ್ಥಳ ಸಂಪರ್ಕ ರಾಡಾರ್">Strategic Location Connectivity Radar</h3>
+              <span class="font-body-sm text-white/60 text-[12px] md:text-[14px]">Happy World Layout Surroundings</span>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 relative z-10">
+            <!-- NH44 -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#B87333]/10 border border-[#B87333]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#CD7F32] via-[#B87333] to-[#8B4513] text-[26px] animate-color-shift drop-shadow-[0_0_10px_rgba(184,115,51,0.4)]" style="font-variation-settings: 'FILL' 1">add_road</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">NH44 Direct</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">200 m</span>
+            </div>
+            
+            <!-- NH7 -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#B87333]/10 border border-[#B87333]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#CD7F32] via-[#B87333] to-[#8B4513] text-[26px] animate-color-shift drop-shadow-[0_0_10px_rgba(184,115,51,0.4)]" style="font-variation-settings: 'FILL' 1">add_road</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">NH7 Connectivity</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">2 kms</span>
+            </div>
+
+            <!-- Rangastala Temple -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#D2691E]/10 border border-[#D2691E]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#FF8C00] via-[#D2691E] to-[#8B4513] text-[26px] animate-glow-pulse drop-shadow-[0_0_10px_rgba(210,105,30,0.5)]" style="font-variation-settings: 'FILL' 1">temple_hindu</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Rangastala Temple</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">3 kms</span>
+            </div>
+
+            <!-- Jalari Temple -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#D2691E]/10 border border-[#D2691E]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#FF8C00] via-[#D2691E] to-[#8B4513] text-[26px] animate-glow-pulse drop-shadow-[0_0_10px_rgba(210,105,30,0.5)]" style="font-variation-settings: 'FILL' 1">temple_hindu</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Jalari Temple</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">5 kms</span>
+            </div>
+
+            <!-- Adi Yogi -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#D2691E]/10 border border-[#D2691E]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#FF8C00] via-[#D2691E] to-[#8B4513] text-[26px] animate-glow-pulse drop-shadow-[0_0_10px_rgba(210,105,30,0.5)]" style="font-variation-settings: 'FILL' 1">self_improvement</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Adi Yogi Foundation</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">5 kms</span>
+            </div>
+
+            <!-- Nandi Temple -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#D2691E]/10 border border-[#D2691E]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#FF8C00] via-[#D2691E] to-[#8B4513] text-[26px] animate-glow-pulse drop-shadow-[0_0_10px_rgba(210,105,30,0.5)]" style="font-variation-settings: 'FILL' 1">temple_hindu</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Nandi Temple</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">7 kms</span>
+            </div>
+
+            <!-- Nandi Hills -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#556B2F]/10 border border-[#556B2F]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#6B8E23] via-[#556B2F] to-[#2E8B57] text-[26px] animate-float-icon drop-shadow-[0_0_10px_rgba(85,107,47,0.4)]" style="font-variation-settings: 'FILL' 1">landscape</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Nandi Hills</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">15 kms</span>
+            </div>
+
+            <!-- Airport -->
+            <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition-all group text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#B87333]/10 border border-[#B87333]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#CD7F32] via-[#B87333] to-[#8B4513] text-[26px] animate-color-shift drop-shadow-[0_0_10px_rgba(184,115,51,0.4)]" style="font-variation-settings: 'FILL' 1">flight_takeoff</span>
+              </div>
+              <span class="font-body-sm text-[12px] text-white/90 font-medium leading-tight h-8 flex items-center justify-center">Airport</span>
+              <span class="font-title-card text-secondary font-bold text-[13px] bg-secondary/10 px-3 py-0.5 rounded-full border border-secondary/20">25 kms</span>
+            </div>
+
+            <!-- Muddenahalli Highlight (Spans Full Width on Mobile) -->
+            <div class="col-span-2 md:col-span-3 lg:col-span-4 mt-2 flex flex-col sm:flex-row items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-[#D2691E]/10 via-white/5 to-transparent border border-[#D2691E]/30 group shadow-lg text-center sm:text-left gap-4">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-[#D2691E]/10 border border-[#D2691E]/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-br from-[#FF8C00] via-[#D2691E] to-[#8B4513] text-[26px] animate-glow-pulse drop-shadow-[0_0_10px_rgba(210,105,30,0.5)]" style="font-variation-settings: 'FILL' 1">church</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="font-headline-sm text-[16px] md:text-[18px] text-white font-bold tracking-wide">Muddenahalli (Sathya Sai Grama)</h4>
+                  <p class="font-body-sm text-[13px] text-white/60 leading-relaxed max-w-2xl">
+                    A prominent spiritual and service hub famously known as Sathya Sai Grama.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-2 sm:mt-0">
+                <span class="font-title-card text-orange-400 font-bold text-[12px] whitespace-nowrap bg-orange-500/10 px-4 py-2 rounded-full border border-orange-500/20 uppercase tracking-wider">Spiritual Hub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Services Ticker / Heritage Seal -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-md opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="w-full rounded-[1.5rem] md:rounded-[2rem] bg-surface-container-low p-4 md:p-6 flex items-center justify-between gap-3 md:gap-4 shadow-sm hover:shadow-md transition-all duration-300 border border-surface-container/50">
+          <div class="flex items-center gap-2 md:gap-5 min-w-0">
+            <div class="w-10 h-10 md:w-14 md:h-14 rounded-[0.75rem] md:rounded-[1rem] bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 shadow-sm">
+              <span class="material-symbols-outlined text-[20px] md:text-[28px]">verified_user</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-title-card text-[15px] md:text-[22px] text-primary font-bold tracking-tight leading-snug break-words" data-en="Legacy of Trust · ಖರೀದಿ | ಮಾರಾಟ" data-kn="ವಿಶ್ವಾಸದ ಪರಂಪರೆ · ಖರೀದಿ | ಮಾರಾಟ">Legacy of Trust · ಖರೀದಿ | ಮಾರಾಟ</span>
+              <span class="font-body-sm text-[11px] md:text-[15px] text-on-surface-variant mt-0.5 leading-snug break-words" data-en="Residential &amp; Commercial" data-kn="ವಸತಿ ಮತ್ತು ವಾಣಿಜ್ಯ">Residential &amp; Commercial</span>
+            </div>
+          </div>
+          <a class="h-10 md:h-14 px-3 md:px-6 rounded-[0.75rem] md:rounded-[1rem] bg-primary text-on-primary font-action-btn text-[14px] md:text-[16px] flex items-center gap-1.5 flex-shrink-0 hover:bg-[#0f2854] transition-colors shadow-md" href="tel:9945608767">
+            <span class="material-symbols-outlined text-[16px] md:text-[20px]">call</span>
+            <span class="hidden sm:inline">99456 08767</span>
+            <span class="inline sm:hidden" data-en="Call" data-kn="ಕರೆ">Call</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Categorized Offerings Section -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto flex flex-col gap-space-sm pb-space-xl opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="flex flex-col gap-1.5">
+          <span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest" data-en="Handpicked Inventory" data-kn="ಆಯ್ಕೆ ಮಾಡಿದ ಆಸ್ತಿಗಳು">Handpicked Inventory</span>
+          <h2 class="font-headline-md text-headline-md leading-[1.4] md:leading-[1.4] text-primary font-bold py-1" data-en="Featured Plot Offerings" data-kn="ವೈಶಿಷ್ಟ್ಯಪೂರ್ಣ ನಿವೇಶನ ಕೊಡುಗೆಗಳು">Featured Plot Offerings</h2>
+          <p class="font-body-md text-body-md leading-[1.6] text-on-surface-variant max-w-2xl mt-1" data-en="Fast-appreciating residential and commercial zones in North Bengaluru." data-kn="ಉತ್ತರ ಬೆಂಗಳೂರಿನ ವೇಗವಾಗಿ ಬೆಳೆಯುತ್ತಿರುವ ವಸತಿ ಮತ್ತು ವಾಣಿಜ್ಯ ವಲಯಗಳು.">Fast-appreciating residential and commercial zones in North Bengaluru.</p>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap gap-2 mt-1 mb-2">
+          <span class="px-3 py-1 bg-primary text-white text-[12px] font-bold rounded-full cursor-pointer shadow" data-en="All Sizes" data-kn="ಎಲ್ಲಾ ಗಾತ್ರಗಳು">All Sizes</span>
+          <span class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-primary text-[12px] font-bold rounded-full cursor-pointer border border-surface-container-high transition-colors">30x40</span>
+          <span class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-primary text-[12px] font-bold rounded-full cursor-pointer border border-surface-container-high transition-colors">30x50</span>
+          <span class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-primary text-[12px] font-bold rounded-full cursor-pointer border border-surface-container-high transition-colors" data-en="Ready to Construct" data-kn="ನಿರ್ಮಾಣಕ್ಕೆ ಸಿದ್ಧವಾಗಿದೆ">Ready to Construct</span>
+        </div>
+
+        <!-- Category Switcher Pill Tabs -->
+        <div class="flex w-full gap-space-xxs p-1 rounded-xl bg-surface-container overflow-x-auto" id="category-tab-bar">
+          <button class="flex-1 min-w-[100px] py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-badge text-label-badge transition-all flex items-center justify-center gap-1" id="tab-villa-plots" onclick="switchCategory('villa-plots')">
+            <span class="material-symbols-outlined text-[16px]">villa</span>
+            <span data-en="Villa Plots" data-kn="ವಿಲ್ಲಾ ಪ್ಲಾಟ್‌ಗಳು">Villa Plots</span>
+          </button>
+          <button class="flex-1 min-w-[100px] py-2 px-3 rounded-lg text-on-surface-variant hover:text-primary font-label-badge text-label-badge transition-all flex items-center justify-center gap-1" id="tab-gated-layouts" onclick="switchCategory('gated-layouts')">
+            <span class="material-symbols-outlined text-[16px]">holiday_village</span>
+            <span data-en="Gated Layouts" data-kn="ಗೇಟೆಡ್ ಲೇಔಟ್‌ಗಳು">Gated Layouts</span>
+          </button>
+          <button class="flex-1 min-w-[100px] py-2 px-3 rounded-lg text-on-surface-variant hover:text-primary font-label-badge text-label-badge transition-all flex items-center justify-center gap-1" id="tab-commercial-land" onclick="switchCategory('commercial-land')">
+            <span class="material-symbols-outlined text-[16px]">domain</span>
+            <span data-en="Commercial" data-kn="ವಾಣಿಜ್ಯ">Commercial</span>
+          </button>
+        </div>
+
+        <!-- Panel A: Individual Villa Plots -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md animate-fade-in-up" id="content-villa-plots"></div>
+        <!-- Panel B: Gated Residential Layouts -->
+        <div class="hidden grid-cols-1 lg:grid-cols-2 gap-space-md animate-fade-in-up" id="content-gated-layouts"></div>
+        <!-- Panel C: Commercial & Highway Facing Plots -->
+        <div class="hidden grid-cols-1 lg:grid-cols-2 gap-space-md animate-fade-in-up" id="content-commercial-land"></div>
+
+        <!-- ===================== -->
+        <!-- Bengaluru Coming Soon -->
+        <!-- ===================== -->
+        <div class="relative mt-8 rounded-[2rem] overflow-hidden group border border-white/10 shadow-2xl">
+          <!-- Dark luxury background -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#001337] via-[#0f2854] to-[#1a1040]"></div>
+          <!-- Animated ambient orbs -->
+          <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+          <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[80px] pointer-events-none" style="animation: pulse 4s ease-in-out infinite 1.5s;"></div>
+          <!-- Subtle grid pattern overlay -->
+          <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+          <!-- Top shimmer line -->
+          <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 p-8 md:p-10 lg:p-12">
+
+            <!-- Left: Text Content -->
+            <div class="flex flex-col gap-5 flex-1 text-center lg:text-left">
+              <!-- Badge row -->
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/15 border border-secondary/30 text-secondary font-label-badge text-[11px] font-extrabold uppercase tracking-widest shadow-[0_0_12px_rgba(251,191,36,0.2)]">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping inline-block"></span> Coming Soon
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 font-label-badge text-[11px] font-bold uppercase tracking-widest">
+                  <span class="material-symbols-outlined text-[13px]">location_city</span> Bengaluru
+                </span>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <h3 class="font-display-hero text-[28px] md:text-[36px] lg:text-[42px] font-extrabold text-white leading-tight tracking-tight">
+                  Premium Plots in <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-[#FDE68A] to-secondary">Bengaluru</span>
+                </h3>
+                <p class="font-body-md text-[14px] md:text-[16px] text-white/60 max-w-xl leading-relaxed">
+                  We are curating an exclusive portfolio of verified, high-appreciation plots in prime Bengaluru corridors. Listings will be revealed soon — register your interest to get priority access before public launch.
+                </p>
+              </div>
+
+              <!-- Key upcoming features -->
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-1">
+                <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-[12px] font-medium">
+                  <span class="material-symbols-outlined text-[15px] text-secondary">verified</span> RERA Registered
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-[12px] font-medium">
+                  <span class="material-symbols-outlined text-[15px] text-secondary">account_balance</span> Bank Loan Ready
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-[12px] font-medium">
+                  <span class="material-symbols-outlined text-[15px] text-secondary">gavel</span> Clear Title
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-[12px] font-medium">
+                  <span class="material-symbols-outlined text-[15px] text-secondary">trending_up</span> High Appreciation Zone
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="flex flex-col sm:flex-row gap-3 mt-2 justify-center lg:justify-start">
+                <a href="https://wa.me/919945608767?text=Hello%20Shiva%20Kumar%20Sir%20%F0%9F%99%8F%2C%20I%20am%20interested%20in%20the%20upcoming%20Bengaluru%20plots.%20Please%20notify%20me%20when%20listings%20are%20live." target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-[#F59E0B] hover:from-[#F59E0B] hover:to-secondary text-[#0F172A] font-extrabold text-[13px] uppercase tracking-widest shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all group/btn overflow-hidden relative">
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                  <span class="material-symbols-outlined text-[18px] relative z-10">notifications_active</span>
+                  <span class="relative z-10">Notify Me on WhatsApp</span>
+                </a>
+                <span class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/15 text-white/60 font-label-badge text-[12px] uppercase tracking-widest cursor-default">
+                  <span class="material-symbols-outlined text-[16px]">schedule</span> Launching Soon
+                </span>
+              </div>
+            </div>
+
+            <!-- Right: Reveal Placeholder Visual -->
+            <div class="flex-shrink-0 flex flex-col items-center justify-center w-full lg:w-[280px] xl:w-[320px]">
+              <div class="relative w-full aspect-square max-w-[260px] rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center gap-4 shadow-2xl">
+                <!-- Blurred placeholder grid effect -->
+                <div class="absolute inset-0 grid grid-cols-3 grid-rows-3 gap-1 p-3 opacity-10 pointer-events-none">
+                  <div class="rounded-lg bg-white/30"></div><div class="rounded-lg bg-white/20"></div><div class="rounded-lg bg-white/30"></div>
+                  <div class="rounded-lg bg-white/20"></div><div class="rounded-lg bg-secondary/40"></div><div class="rounded-lg bg-white/20"></div>
+                  <div class="rounded-lg bg-white/30"></div><div class="rounded-lg bg-white/20"></div><div class="rounded-lg bg-white/30"></div>
+                </div>
+                <!-- Central lock icon -->
+                <div class="relative w-20 h-20 rounded-full bg-gradient-to-br from-secondary/20 to-transparent border border-secondary/30 flex items-center justify-center shadow-[0_0_30px_rgba(251,191,36,0.2)]">
+                  <span class="material-symbols-outlined text-[36px] text-secondary drop-shadow-[0_0_10px_rgba(251,191,36,0.6)]" style="font-variation-settings: 'FILL' 1">lock</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 relative z-10 px-4 text-center">
+                  <span class="font-headline-sm text-white font-bold text-[16px]">Details Being Finalised</span>
+                  <span class="font-body-sm text-white/40 text-[12px] leading-relaxed">Verified listings will be revealed here. Will update soon.</span>
+                </div>
+                <!-- Scanning line animation -->
+                <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/60 to-transparent" style="animation: scan 3s linear infinite; top: 0;"></div>
+              </div>
+              <p class="font-label-badge text-[10px] text-white/30 uppercase tracking-widest mt-4 text-center">Plots • Layouts • Commercial</p>
+            </div>
+
+          </div>
+        </div>
+
+        <style>
+          @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+          }
+        </style>
+
+      </section>
+
+
+      <!-- Connectivity Radar -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-xl opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col text-center items-center max-w-2xl mx-auto">
+            <span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest" data-en="Strategic Location" data-kn="ಕಾರ್ಯತಂತ್ರದ ಸ್ಥಳ">Strategic Location</span>
+            <h2 class="font-headline-md text-[24px] md:text-[32px] text-primary font-bold mt-1" data-en="North Bengaluru Connectivity Radar" data-kn="ಉತ್ತರ ಬೆಂಗಳೂರು ಸಂಪರ್ಕ ರೇಡಾರ್">North Bengaluru Connectivity Radar</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-2" data-en="Yelahanka - Bagalur Road is the fastest appreciating corridor due to unparalleled proximity to major hubs." data-kn="ಯಲಹಂಕ - ಬಾಗಲೂರು ರಸ್ತೆ ವೇಗವಾಗಿ ಬೆಳೆಯುತ್ತಿರುವ ಕಾರಿಡಾರ್ ಆಗಿದೆ.">Yelahanka - Bagalur Road is the fastest appreciating corridor due to unparalleled proximity to major hubs.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
+            <div class="bg-surface-container-lowest border border-surface-container p-4 rounded-xl flex items-center gap-4 hover:shadow-lg transition-shadow group">
+              <div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[24px]">flight_takeoff</span>
+              </div>
+              <div class="flex flex-col flex-1">
+                <span class="font-title-card text-[15px] font-bold text-primary">KIAL Airport</span>
+                <span class="font-body-sm text-[12px] text-on-surface-variant">Via Alternate Express Road</span>
+              </div>
+              <div class="flex flex-col items-end">
+                <span class="font-headline-sm text-[18px] text-secondary font-extrabold">15 Mins</span>
+                <span class="text-[10px] text-outline font-bold">14 km</span>
+              </div>
+            </div>
+
+            <div class="bg-surface-container-lowest border border-surface-container p-4 rounded-xl flex items-center gap-4 hover:shadow-lg transition-shadow group">
+              <div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[24px]">corporate_fare</span>
+              </div>
+              <div class="flex flex-col flex-1">
+                <span class="font-title-card text-[15px] font-bold text-primary">KIADB Aerospace SEZ</span>
+                <span class="font-body-sm text-[12px] text-on-surface-variant">IT & Hardware Park</span>
+              </div>
+              <div class="flex flex-col items-end">
+                <span class="font-headline-sm text-[18px] text-secondary font-extrabold">10 Mins</span>
+                <span class="text-[10px] text-outline font-bold">7 km</span>
+              </div>
+            </div>
+
+            <div class="bg-surface-container-lowest border border-surface-container p-4 rounded-xl flex items-center gap-4 hover:shadow-lg transition-shadow group">
+              <div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[24px]">science</span>
+              </div>
+              <div class="flex flex-col flex-1">
+                <span class="font-title-card text-[15px] font-bold text-primary">Shell Technology Centre</span>
+                <span class="font-body-sm text-[12px] text-on-surface-variant">R&D Hub</span>
+              </div>
+              <div class="flex flex-col items-end">
+                <span class="font-headline-sm text-[18px] text-secondary font-extrabold">8 Mins</span>
+                <span class="text-[10px] text-outline font-bold">5 km</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advisory Leadership & Guarantee Section -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto flex flex-col gap-8 md:gap-12 pb-space-xl opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+        <!-- Section Header -->
+        <div class="flex flex-col items-center text-center max-w-3xl mx-auto gap-3">
+          <span class="font-label-badge text-[11px] md:text-[13px] text-[#9a7312] uppercase tracking-[0.2em] font-bold" data-en="Unrivaled Local Governance" data-kn="ಅಪ್ರತಿಮ ಸ್ಥಳೀಯ ಆಡಳಿತ">Unrivaled Local Governance</span>
+          <h2 class="font-headline-lg text-[28px] md:text-[36px] lg:text-[44px] text-[#0f2854] font-extrabold leading-[1.4] tracking-tight py-1" data-en="Advisory Leadership &amp; Legal Verification Guarantee" data-kn="ಸಲಹಾ ನಾಯಕತ್ವ ಮತ್ತು ಕಾನೂನು ಪರಿಶೀಲನೆ ಖಾತರಿ">Advisory Leadership &amp; Legal Verification Guarantee</h2>
+          <p class="font-body-md text-[14px] md:text-[16px] text-on-surface-variant mt-2 font-medium">ಖರೀದಿ ಮತ್ತು ಮಾರಾಟದಲ್ಲಿ ನಿಖರ ಕಾನೂನು ತಪಾಸಣೆ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹತೆ.</p>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          
+          <!-- Left Card: Profile & Advisory -->
+          <div class="bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 lg:p-8 shadow-[0_8px_30px_rgba(0,19,55,0.06)] border border-surface-container/50 flex flex-col h-full group">
+            
+            <!-- Profile Header -->
+            <div class="flex items-center gap-4 md:gap-5 pb-5 border-b border-surface-container">
+              <img src="assets/images/shiva-kumar-profile.jpg" alt="Shiva Kumar" class="w-16 h-16 md:w-20 md:h-20 rounded-[1rem] object-cover shadow-sm group-hover:scale-105 transition-transform duration-500" />
+              <div class="flex flex-col items-start gap-0.5">
+                <span class="bg-[#fce5a3] text-[#735300] font-label-badge text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider mb-0.5">Chief Land Consultant</span>
+                <span class="font-headline-sm text-[20px] md:text-[24px] text-[#0f2854] font-bold leading-tight">Shiva Kumar</span>
+                <span class="font-body-sm text-[11px] md:text-[12px] text-[#8c6b14] font-bold">15+ Years Yelahanka Property Specialist</span>
+              </div>
+            </div>
+
+            <!-- Advisory Text -->
+            <p class="font-body-md text-[14px] md:text-[14.5px] text-[#4a5568] leading-[1.7] py-5">
+              “Navigating Bangalore North real estate requires profound local expertise, stringent legal vetting, and unshakeable integrity. With 15+ years of boots-on-the-ground experience in Yelahanka and Bagalur corridor, we assure zero-litigation investments with 100% peace of mind.”
+            </p>
+
+            <!-- Kannada Quote -->
+            <div class="bg-[#eef2fc] rounded-[0.75rem] p-4 mb-5">
+              <p class="font-title-card text-[13px] md:text-[14px] text-[#0f2854] font-semibold leading-relaxed">
+                “ನಿಮ್ಮ ಜೀವಮಾನದ ಉಳಿತಾಯಕ್ಕೆ ಸುರಕ್ಷಿತವಾದ, ಶ್ರೇಷ್ಠ ಬೆಲೆಯ ಅಧಿಕೃತ ನಿವೇಶನಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಕೊಡುವುದು ನಮ್ಮ ಧ್ಯೇಯ.”
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-2.5 mt-2">
+              <!-- Hotline -->
+              <a href="tel:9945608767" class="flex items-center gap-3 bg-[#f4f7fb] hover:bg-[#eef2fc] transition-colors p-3 rounded-[0.75rem]">
+                <div class="w-9 h-9 md:w-10 md:h-10 bg-[#0f2854] rounded-md flex items-center justify-center text-[#eec14b] flex-shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[18px] md:text-[20px]">call</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-body-sm text-[10px] md:text-[11px] text-[#4a5568]">Direct Advisory Hotline</span>
+                  <span class="font-title-card text-[14px] md:text-[15px] text-[#0f2854] font-bold leading-tight">+91 99456 08767</span>
+                </div>
+              </a>
+              <!-- Email -->
+              <a href="mailto:shivarealestate.in@gmail.com" class="flex items-center gap-3 bg-[#f4f7fb] hover:bg-[#eef2fc] transition-colors p-3 rounded-[0.75rem]">
+                <div class="w-9 h-9 md:w-10 md:h-10 bg-[#0f2854] rounded-md flex items-center justify-center text-[#eec14b] flex-shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[18px] md:text-[20px]">mail</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-body-sm text-[10px] md:text-[11px] text-[#4a5568]">Official Mail Desk</span>
+                  <span class="font-title-card text-[13px] md:text-[14px] text-[#0f2854] font-bold leading-tight">shivarealestate.in@gmail.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Card: The Guarantee -->
+          <div class="bg-[#122645] rounded-[1.5rem] md:rounded-[2rem] p-6 lg:p-8 flex flex-col h-full text-white shadow-xl relative overflow-hidden">
+            <!-- Decorative BG blur -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] pointer-events-none"></div>
+
+            <div class="flex flex-col gap-1.5 mb-6 relative z-10">
+              <span class="font-label-badge text-[11px] md:text-[12px] text-[#eec14b] uppercase tracking-[0.15em] font-bold">The Shiva Real Estate Guarantee</span>
+              <h3 class="font-headline-sm text-[24px] md:text-[28px] font-bold leading-tight">3 Irrevocable Protections for Every Land Buyer</h3>
+              <p class="font-body-md text-[13.5px] md:text-[14.5px] text-[#a0aec0] mt-1.5 leading-[1.6]">
+                Every parcel on our roster undergoes exhaustive three-tier scrutiny by high court civil advocates prior to being presented to our clients.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-3.5 relative z-10">
+              <!-- Item 1 -->
+              <div class="bg-[#1d3153] border border-[#2c4267] rounded-xl p-3.5 md:p-4 flex gap-4 items-start hover:bg-[#23385c] transition-colors">
+                <div class="w-10 h-10 bg-[#eec14b] rounded-lg flex items-center justify-center text-[#122645] flex-shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[20px]">gavel</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-title-card text-[15px] md:text-[16px] text-[#eec14b] font-bold">100% Legal Scrutiny Guarantee</span>
+                  <span class="font-body-sm text-[12px] md:text-[12.5px] text-[#cbd5e1] leading-[1.5]">30-Year audited mother deeds, Nil-encumbrance ECs directly verified from the sub-registrar portal, family tree documentation, and complete litigation-free certificate issued upfront.</span>
+                </div>
+              </div>
+              
+              <!-- Item 2 -->
+              <div class="bg-[#1d3153] border border-[#2c4267] rounded-xl p-3.5 md:p-4 flex gap-4 items-start hover:bg-[#23385c] transition-colors">
+                <div class="w-10 h-10 bg-[#eec14b] rounded-lg flex items-center justify-center text-[#122645] flex-shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[20px]">description</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-title-card text-[15px] md:text-[16px] text-[#eec14b] font-bold">End-to-End Registration Desk</span>
+                  <span class="font-body-sm text-[12px] md:text-[12.5px] text-[#cbd5e1] leading-[1.5]">Direct Sub-registrar token booking, stamp duty optimization, Kaveri 2.0 biometric scheduling, and expedited e-Khata mutation and property tax record transfers into buyer's name.</span>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="bg-[#1d3153] border border-[#2c4267] rounded-xl p-3.5 md:p-4 flex gap-4 items-start hover:bg-[#23385c] transition-colors">
+                <div class="w-10 h-10 bg-[#eec14b] rounded-lg flex items-center justify-center text-[#122645] flex-shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[20px]">handshake</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-title-card text-[15px] md:text-[16px] text-[#eec14b] font-bold">Transparent Pricing &amp; Direct Handover</span>
+                  <span class="font-body-sm text-[12px] md:text-[12.5px] text-[#cbd5e1] leading-[1.5]">Direct landowner quoted pricing without hidden intermediary margins. Physical on-ground survey, physical boundary marking with granite corner stones, and instant plot possession.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-auto pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-t border-[#2c4267] relative z-10">
+              <div class="flex items-center gap-1.5 text-[#a0aec0]">
+                <span class="material-symbols-outlined text-[16px]">verified</span>
+                <span class="font-body-sm text-[12px]">Backed by verified land documentation</span>
+              </div>
+              <span class="font-title-card text-[12px] text-[#eec14b] font-semibold">Yelahanka • Bagalur • Devanahalli</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Plot Selector & Inquiry Lead Form -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-xl opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;" id="inquiry-section">
+        <div class="w-full rounded-3xl bg-surface-container-lowest p-space-md md:p-space-lg shadow-md hover:shadow-xl transition-all duration-500 flex flex-col gap-space-md border border-surface-container-high">
+          <div class="flex flex-col">
+            <span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest" data-en="Property Inquiry" data-kn="ಆಸ್ತಿ ವಿಚಾರಣೆ">Property Inquiry</span>
+            <h2 class="font-headline-md text-headline-md text-primary font-bold" data-en="Send an Inquiry" data-kn="ವಿಚಾರಣೆಯನ್ನು ಸಲ್ಲಿಸಿ">Send an Inquiry</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1" data-en="Share your requirements and we will get back to you with the best options." data-kn="ನಿಮ್ಮ ಅವಶ್ಯಕತೆಗಳನ್ನು ನಮಗೆ ತಿಳಿಸಿ ಮತ್ತು ನಾವು ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.">Share your requirements and we will get back to you with the best options.</p>
+          </div>
+          <form class="flex flex-col gap-space-sm" id="lead-form" onsubmit="event.preventDefault(); submitInquiry();">
+            
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-badge text-label-badge text-primary" data-en="I Am Interested In:" data-kn="ಆಸಕ್ತಿಯುಳ್ಳ ಆಸ್ತಿ:">I Am Interested In:</label>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                
+                <label class="relative flex flex-col p-3 border-2 border-surface-container rounded-xl cursor-pointer hover:border-primary/30 transition-colors [&:has(:checked)]:border-primary [&:has(:checked)]:bg-primary/5 group">
+                  <input type="radio" name="property_type" value="Villa Plots" class="absolute opacity-0" checked>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="material-symbols-outlined text-[20px] text-on-surface-variant group-has-[:checked]:text-primary">villa</span>
+                    <div class="w-4 h-4 rounded-full border-2 border-outline-variant flex items-center justify-center group-has-[:checked]:border-primary">
+                      <div class="w-2 h-2 rounded-full bg-primary scale-0 group-has-[:checked]:scale-100 transition-transform"></div>
+                    </div>
+                  </div>
+                  <span class="font-title-card text-[14px] font-bold text-primary" data-en="Villa Plots" data-kn="ವಿಲ್ಲಾ ಪ್ಲಾಟ್‌ಗಳು">Villa Plots</span>
+                </label>
+
+                <label class="relative flex flex-col p-3 border-2 border-surface-container rounded-xl cursor-pointer hover:border-primary/30 transition-colors [&:has(:checked)]:border-primary [&:has(:checked)]:bg-primary/5 group">
+                  <input type="radio" name="property_type" value="Gated Layout" class="absolute opacity-0">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="material-symbols-outlined text-[20px] text-on-surface-variant group-has-[:checked]:text-primary">holiday_village</span>
+                    <div class="w-4 h-4 rounded-full border-2 border-outline-variant flex items-center justify-center group-has-[:checked]:border-primary">
+                      <div class="w-2 h-2 rounded-full bg-primary scale-0 group-has-[:checked]:scale-100 transition-transform"></div>
+                    </div>
+                  </div>
+                  <span class="font-title-card text-[14px] font-bold text-primary" data-en="Gated Layout" data-kn="ಗೇಟೆಡ್ ಲೇಔಟ್">Gated Layout</span>
+                </label>
+
+                <label class="relative flex flex-col p-3 border-2 border-surface-container rounded-xl cursor-pointer hover:border-primary/30 transition-colors [&:has(:checked)]:border-primary [&:has(:checked)]:bg-primary/5 group">
+                  <input type="radio" name="property_type" value="Commercial Land" class="absolute opacity-0">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="material-symbols-outlined text-[20px] text-on-surface-variant group-has-[:checked]:text-primary">domain</span>
+                    <div class="w-4 h-4 rounded-full border-2 border-outline-variant flex items-center justify-center group-has-[:checked]:border-primary">
+                      <div class="w-2 h-2 rounded-full bg-primary scale-0 group-has-[:checked]:scale-100 transition-transform"></div>
+                    </div>
+                  </div>
+                  <span class="font-title-card text-[14px] font-bold text-primary" data-en="Commercial" data-kn="ವಾಣಿಜ್ಯ">Commercial</span>
+                </label>
+
+                <label class="relative flex flex-col p-3 border-2 border-surface-container rounded-xl cursor-pointer hover:border-primary/30 transition-colors [&:has(:checked)]:border-primary [&:has(:checked)]:bg-primary/5 group">
+                  <input type="radio" name="property_type" value="Custom Requirement" class="absolute opacity-0">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="material-symbols-outlined text-[20px] text-on-surface-variant group-has-[:checked]:text-primary">travel_explore</span>
+                    <div class="w-4 h-4 rounded-full border-2 border-outline-variant flex items-center justify-center group-has-[:checked]:border-primary">
+                      <div class="w-2 h-2 rounded-full bg-primary scale-0 group-has-[:checked]:scale-100 transition-transform"></div>
+                    </div>
+                  </div>
+                  <span class="font-title-card text-[14px] font-bold text-primary" data-en="Custom Search" data-kn="ಕಸ್ಟಮ್ ಹುಡುಕಾಟ">Custom Search</span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Inputs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+              <div class="flex flex-col gap-1">
+                <label class="font-label-badge text-label-badge text-primary" for="visitor-name" data-en="Full Name" data-kn="ಪೂರ್ಣ ಹೆಸರು">Full Name</label>
+                <input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md border border-surface-container focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="visitor-name" placeholder="e.g., Ramesh Gowda" required="" type="text"/>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="font-label-badge text-label-badge text-primary" for="visitor-phone" data-en="Mobile Number" data-kn="ಮೊಬೈಲ್ ಸಂಖ್ಯೆ">Mobile Number</label>
+                <div class="relative flex items-center">
+                  <div class="absolute left-3 font-body-md text-on-surface-variant font-bold border-r border-surface-container pr-2 py-1">+91</div>
+                  <input class="w-full h-11 pl-14 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md border border-surface-container focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="visitor-phone" placeholder="9945608767" required="" type="tel" pattern="[6-9][0-9]{9}" maxlength="10"/>
+                </div>
+              </div>
+            </div>
+
+            <input type="hidden" id="visit-date" value="N/A">
+            <button class="w-full h-12 mt-4 rounded-xl bg-primary-container text-on-primary font-action-btn text-[15px] flex items-center justify-center gap-2 shadow-lg hover:bg-primary transition-all active:scale-[0.98]" type="submit">
+              <span class="material-symbols-outlined text-[20px]">send</span>
+              <span data-en="Submit Inquiry" data-kn="ವಿಚಾರಣೆ ಸಲ್ಲಿಸಿ">Submit Inquiry</span>
+            </button>
+            <p class="text-center text-[11px] text-on-surface-variant font-medium mt-1">🔒 No spam. 100% confidential discussion.</p>
+            
+            <!-- Dynamic Success Notice -->
+            <div class="hidden p-3 rounded-xl bg-surface-container-low text-primary flex items-center gap-2" id="form-success">
+              <span class="material-symbols-outlined text-secondary">check_circle</span>
+              <span class="font-body-sm text-body-sm font-semibold">Thank you! Shiva Kumar will contact you shortly regarding your inquiry.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Office Location & Map Details Section -->
+      <section class="w-full px-gutter-mobile md:px-gutter-desktop lg:px-12 max-w-max-container mx-auto pb-space-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="w-full rounded-3xl bg-surface-container-low p-space-md md:p-space-lg shadow-md hover:shadow-xl transition-all duration-500 flex flex-col gap-space-md">
+          <div class="flex flex-col">
+            <span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest">Headquarters &amp; Consultation Desk</span>
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">Visit Our Office</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Located right at the heart of Yelahanka - Bagalur junction.</p>
+          </div>
+          <!-- Static Map Component -->
+          <div class="w-full h-48 bg-cover bg-center rounded-xl shadow-inner relative overflow-hidden" data-location="Shop No 14, 1st Floor, BSF BUS STOP, BAGALURU MAIN ROAD, YELAHANKA, BENGALURU 560064" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWJae0ZML31SkzvM3VjaTC3frESi-QGIbxJqFyQ-c_MAJhuM40dxLTGrbA3Pl0Fb6KAKvIsI_-Y0IwaWGZ_eSOIbEERYEBbUzUlrtGmJCeoIFF9WPX5OVutnVOJQtXeT1W1bCHqm_L1c-snaVRq_7WvHDkhsW4MXN2U174ddLcHe4nRjUfJMvQrSULcgT9or68m_fcw6-X4wZUAIYktGJydnukJwbaRnwJJHEhdR4MhhewuEEWasYL7g')">
+            <div class="absolute bottom-2 left-2 bg-primary/90 text-on-primary px-3 py-1 rounded-full font-label-badge text-label-badge flex items-center gap-1 shadow">
+              <span class="material-symbols-outlined text-[14px] text-secondary-container">apartment</span>
+              Shiva Real Estate · BSF Bus Stop
+            </div>
+          </div>
+          <!-- Verbatim Address Card -->
+          <div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded-xl">
+            <div class="flex items-start gap-space-xs">
+              <div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[20px]">store</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-title-card text-title-card text-primary font-bold">Office Address</span>
+                <p class="font-body-md text-body-md text-on-surface mt-0.5">
+                  Shop No 14, 1st Floor, BSF BUS STOP, BAGALURU MAIN ROAD, YELAHANKA, BENGALURU 560064
+                </p>
+                <span class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  ಖಾಸಗಿ ಕಚೇರಿ: ಬಿ.ಎಸ್.ಎಫ್ ಬಸ್ ನಿಲ್ದಾಣ, ಬಾಗಲೂರು ಮುಖ್ಯ ರಸ್ತೆ, ಯಲಹಂಕ, ಬೆಂಗಳೂರು.
+                </span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+              <div class="flex flex-col bg-surface-container p-2.5 rounded-lg">
+                <span class="font-label-badge text-label-badge text-outline">Operating Hours</span>
+                <span class="font-title-card text-title-card text-primary font-bold">9:00 AM – 8:00 PM</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Monday to Sunday (All 7 Days)</span>
+              </div>
+              <div class="flex flex-col bg-surface-container p-2.5 rounded-lg">
+                <span class="font-label-badge text-label-badge text-outline">Consultation</span>
+                <span class="font-title-card text-title-card text-primary font-bold">Free Walk-in</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Documents Verification</span>
+              </div>
+            </div>
+            <div class="pt-2 flex gap-space-xs">
+              <a class="flex-1 h-11 rounded-xl bg-surface-container text-primary font-action-btn text-action-btn flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors" href="https://maps.google.com/?q=BSF+Bus+Stop+Bagalur+Main+Road+Yelahanka+Bengaluru" rel="noopener noreferrer" target="_blank">
+                <span class="material-symbols-outlined text-[18px]">directions</span>
+                Open in Google Maps
+              </a>
+              <a class="h-11 px-4 rounded-xl bg-primary-container text-on-primary font-action-btn text-action-btn flex items-center justify-center gap-1" href="tel:9945608767">
+                <span class="material-symbols-outlined text-[18px]">call</span>
+                Call Office
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="hidden flex-col w-full pb-8" id="page-about"></div>
+    <script src="js/main.js"></script>
+  </main>
+
+  <footer class="w-full bg-primary border-t border-white/10 pt-16 pb-28 md:pb-12 px-gutter-mobile md:px-gutter-desktop lg:px-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
+    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+    
+    <div class="max-w-max-container mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 md:gap-12 relative z-10">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex flex-col items-center lg:items-start gap-5">
+        <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+          <div class="p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(251,191,36,0.3)] transition-all duration-300">
+            <img src="assets/images/logo.png" alt="Shiva Real Estate Logo" class="h-10 w-auto object-contain" />
+          </div>
+          <span class="font-headline-sm text-[24px] md:text-[28px] bg-gradient-to-r from-white via-secondary to-[#FCD34D] bg-clip-text text-transparent font-extrabold tracking-tight drop-shadow-sm">Shiva Real Estate</span>
+        </div>
+        <p class="font-body-sm text-[13px] md:text-[14px] text-white/50 max-w-md text-center lg:text-left leading-relaxed">
+          Premier verified land and layout development consultancy serving North Bengaluru for 30+ years. Legacy built on trust, transparency, and strategic investments.
+        </p>
+      </div>
+
+      <!-- Quick Contact Info -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full lg:w-auto">
+        <!-- Head Office -->
+        <div class="flex items-center gap-4 p-3 pr-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer backdrop-blur-md w-full sm:w-auto group shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px] text-white/70 group-hover:text-white transition-colors">location_on</span>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="font-label-badge text-[10px] text-white/40 uppercase tracking-widest font-bold mb-0.5">Head Office</span>
+            <span class="font-title-card text-[14px] text-white/90 font-medium tracking-wide">Bagalur Main Road, Yelahanka</span>
+          </div>
+        </div>
+        
+        <!-- Direct Desk -->
+        <a href="tel:9945608767" class="flex items-center gap-4 p-3 pr-6 rounded-2xl bg-gradient-to-br from-secondary/10 to-transparent border border-secondary/20 hover:border-secondary/40 hover:bg-secondary/10 transition-all cursor-pointer backdrop-blur-md w-full sm:w-auto group shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-secondary/20 to-transparent border border-secondary/20 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform relative">
+            <span class="absolute inset-0 rounded-full bg-secondary/20 animate-ping opacity-50"></span>
+            <span class="material-symbols-outlined text-[20px] text-secondary relative z-10">call</span>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="font-label-badge text-[10px] text-secondary/60 uppercase tracking-widest font-bold mb-0.5">Direct Desk</span>
+            <span class="font-title-card text-[15px] font-bold text-secondary tracking-wide group-hover:text-[#FCD34D] transition-colors">+91 99456 08767</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Bottom Bar -->
+    <div class="max-w-max-container mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center relative z-10">
+      <span class="font-body-sm text-[12px] text-white/40 font-medium">© 2026 Shiva Real Estate. All rights reserved. Registered Bengaluru Land Consultant.</span>
+      <div class="flex items-center justify-center gap-6 font-label-badge text-[11px] uppercase tracking-wider text-white/40 font-bold">
+        <a href="#" class="hover:text-secondary transition-colors">Disclaimers</a>
+        <a href="#" class="hover:text-secondary transition-colors">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified Mobile Luxury Floating Action Dock -->
+  <nav class="fixed bottom-5 inset-x-5 z-50 md:hidden pointer-events-none">
+    <div class="w-full bg-white/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(15,40,84,0.2)] rounded-full border border-white/50 flex items-center justify-between p-1.5 pointer-events-auto">
+      
+      <div class="flex items-center gap-1 pl-2">
+        <a aria-current="page" id="nav-btn-home" class="flex flex-col items-center justify-center w-[60px] h-[50px] rounded-full transition-all text-primary bg-primary/5" onclick="switchPage('home'); switchCategory('villa-plots'); return false;" href="#">
+          <span class="material-symbols-outlined text-[24px]">apartment</span>
+          <span class="font-label-badge text-[10px] font-bold mt-0.5">Home</span>
+        </a>
+        <a id="nav-btn-about" class="flex flex-col items-center justify-center w-[60px] h-[50px] rounded-full text-outline hover:text-primary transition-all" onclick="switchPage('about'); return false;" href="#">
+          <span class="material-symbols-outlined text-[24px]">person</span>
+          <span class="font-label-badge text-[10px] font-medium mt-0.5">About</span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 pr-1">
+        <a class="h-[46px] px-5 rounded-full bg-primary text-white flex items-center justify-center gap-1.5 font-action-btn text-[14px] shadow-[0_8px_20px_rgba(15,40,84,0.3)] hover:bg-[#0a1930] transition-all active:scale-[0.96]" onclick="switchPage('home'); setTimeout(() => document.getElementById('inquiry-section').scrollIntoView({behavior: 'smooth'}), 100); return false;" href="#">
+          <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+          <span class="tracking-wide">Schedule</span>
+        </a>
+        
+        <a class="w-[46px] h-[46px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_8px_20px_rgba(37,211,102,0.4)] hover:bg-[#1DA851] transition-all active:scale-[0.96] relative" href="https://wa.me/919945608767?text=Hello%20Shiva%20Real%20Estate,%20I%20am%20interested%20in%20Yelahanka%20properties">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 animate-ping"></span>
+          <svg class="w-6 h-6 relative fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>

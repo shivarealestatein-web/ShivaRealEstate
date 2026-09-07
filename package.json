@@ -1,0 +1,20 @@
+{
+  "name": "shiva-real-estate",
+  "version": "1.0.0",
+  "description": "Shiva Real Estate - Properties Directory Web App",
+  "scripts": {
+    "start": "node live-server.js",
+    "dev": "node live-server.js",
+    "test:unit": "jest",
+    "test:e2e": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "eslint": "^10.10.0",
+    "http-server": "^14.1.1",
+    "jest": "^30.5.1"
+  }
+}
