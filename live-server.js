@@ -84,6 +84,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (pathname.startsWith('/_vercel/')) {
+    res.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8' });
+    res.end('/* Vercel Insights Local Mock */');
+    return;
+  }
+
   if (pathname === '/') {
     pathname = '/index.html';
   }

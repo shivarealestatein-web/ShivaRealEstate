@@ -5,3 +5,4 @@ build/
 .env
 playwright-report/
 test-results/
+tests/*.png

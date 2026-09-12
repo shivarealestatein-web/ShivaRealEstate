@@ -1,12 +1,16 @@
-const CACHE_NAME = 'shiva-real-estate-v1';
+const CACHE_NAME = 'modern-real-estate-v1';
 const urlsToCache = [
   '/',
   '/index.html',
   '/css/styles.css',
   '/js/tailwind.config.js',
+  '/js/main.js',
+  '/manifest.json',
   '/assets/images/logo.png',
   '/assets/images/shiva-kumar-profile.jpg',
-  '/assets/images/happy-world-layout-hq.png'
+  '/assets/images/layout-map.png',
+  '/assets/images/master-plan-new.png',
+  '/components/about-me.html'
 ];
 
 // Install a service worker

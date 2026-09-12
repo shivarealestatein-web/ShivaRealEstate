@@ -1,20 +1,35 @@
 {
-  "name": "shiva-real-estate",
+  "name": "modern-real-estate",
   "version": "1.0.0",
-  "description": "Shiva Real Estate - Properties Directory Web App",
+  "description": "Modern Real Estate - Properties Directory Web App",
   "scripts": {
     "start": "node live-server.js",
     "dev": "node live-server.js",
-    "test:unit": "jest",
-    "test:e2e": "playwright test"
+    "test": "jest tests/unit",
+    "test:unit": "jest tests/unit",
+    "test:e2e": "playwright test",
+    "audit": "npm run test:unit && playwright test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "real-estate",
+    "bengaluru",
+    "plots",
+    "properties"
+  ],
+  "author": "Modern Real Estate",
   "license": "ISC",
+  "jest": {
+    "testMatch": [
+      "<rootDir>/tests/unit/**/*.test.js"
+    ]
+  },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "eslint": "^10.10.0",
     "http-server": "^14.1.1",
     "jest": "^30.5.1"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
   }
 }

@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Shiva Real Estate Landing Page', () => {
+test.describe('Modern Real Estate Landing Page', () => {
   test('has the correct title', async ({ page }) => {
     // We will serve the app on a local port during CI (e.g. 8080)
     await page.goto('/');
-    await expect(page).toHaveTitle(/Shiva Real Estate/i);
+    await expect(page).toHaveTitle(/Modern Real Estate/i);
   });
 
   test('hero section renders correctly', async ({ page }) => {
